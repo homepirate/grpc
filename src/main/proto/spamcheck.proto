@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option java_package = "org.example";
+option java_multiple_files = true;
+
+service SpamCheckService {
+  rpc CheckFeedback(FeedbackCheckRequest) returns (FeedbackCheckResponse);
+}
+
+message FeedbackCheckRequest {
+  string message = 1;
+}
+
+message FeedbackCheckResponse {
+  bool isSpam = 1;
+  repeated string forbiddenWords = 2;
+}
